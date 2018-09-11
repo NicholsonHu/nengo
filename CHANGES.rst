@@ -80,6 +80,8 @@ Release History
 - The ``settled_firingrate`` function has been moved from
   ``nengo.utils.neurons`` to ``nengo.neurons``.
   (`#1187 <https://github.com/nengo/nengo/pull/1187>`_)
+- Added new pytest config option, ``nengo_test_unsupported`` (replacing the
+  previous ``Simulator.unsupported`` functionality).
 
 **Deprecated**
 

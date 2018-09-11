@@ -28,3 +28,6 @@ def pytest_addoption(parser):
                      help='Run deprecated SPA tests')
     parser.addoption('--unsupported', action='store_true', default=False,
                      help='Run tests marked as unsupported by this backend.')
+    parser.addini("nengo_test_unsupported", type="linelist",
+                  help="List of unsupported unit tests with reason for "
+                       "exclusion")
