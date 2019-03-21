@@ -80,6 +80,8 @@ Release History
 - The ``settled_firingrate`` function has been moved from
   ``nengo.utils.neurons`` to ``nengo.neurons``.
   (`#1187 <https://github.com/nengo/nengo/pull/1187>`_)
+- Switched to nengo-bones templating system for TravisCI config/scripts
+  (`#1514 <https://github.com/nengo/nengo/pull/1514>`_)
 
 **Deprecated**
 
