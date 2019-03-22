@@ -93,6 +93,8 @@ Release History
   networks are officially deprecated. Use ``input_a`` and ``input_b`` instead.
   (`#887 <https://github.com/nengo/nengo/issues/887>`__,
   `#1179 <https://github.com/nengo/nengo/pull/1179>`__)
+- Nengo no longer supports Python 3.4 (official 3.4 support ended in
+  March 2019, see https://www.python.org/dev/peps/pep-0429/).
 
 **Removed**
 
