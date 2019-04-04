@@ -360,7 +360,7 @@ class OpInfo(Mapping):
         "_OpDetails", ["first_view", "v_offset", "v_size", "v_base"])
 
     def __init__(self):
-        super(OpInfo, self).__init__()
+        super().__init__()
         self.info = {}
 
     def __getitem__(self, op):

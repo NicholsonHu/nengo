@@ -8,7 +8,7 @@ from nengo.utils.progress import AutoProgressBar, Progress, ProgressBar
 
 class ProgressBarMock(ProgressBar):
     def __init__(self):
-        super(ProgressBarMock, self).__init__()
+        super().__init__()
         self.n_update_calls = 0
 
     def update(self, progress):

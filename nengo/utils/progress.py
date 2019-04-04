@@ -274,7 +274,7 @@ class VdomProgressBar(ProgressBar):
     """
 
     def __init__(self):
-        super(VdomProgressBar, self).__init__()
+        super().__init__()
         self._uuid = uuid.uuid4()
         self._handle = None
         self.progress = None
@@ -400,7 +400,7 @@ class HtmlProgressBar(ProgressBar):
     """
 
     def __init__(self):
-        super(HtmlProgressBar, self).__init__()
+        super().__init__()
         self._uuid = uuid.uuid4()
         self._handle = None
 
@@ -535,7 +535,7 @@ class VdomOrHtmlProgressBar(ProgressBar):
     """
 
     def __init__(self):
-        super(VdomOrHtmlProgressBar, self).__init__()
+        super().__init__()
         self._handle = None
         self._vdom = VdomProgressBar()
         self._html = HtmlProgressBar()
@@ -577,7 +577,7 @@ class IPython5ProgressBar(ProgressBar):
     """
 
     def __init__(self):
-        super(IPython5ProgressBar, self).__init__()
+        super().__init__()
 
         class Displayable:
             def __init__(self):
@@ -611,7 +611,7 @@ class WriteProgressToFile(ProgressBar):
 
     def __init__(self, filename):
         self.filename = filename
-        super(WriteProgressToFile, self).__init__()
+        super().__init__()
 
     def update(self, progress):
         if progress.finished:
@@ -641,7 +641,7 @@ class AutoProgressBar(ProgressBar):
     def __init__(self, delegate, min_eta=1.):
         self.delegate = delegate
 
-        super(AutoProgressBar, self).__init__()
+        super().__init__()
 
         self.min_eta = min_eta
         self._visible = False

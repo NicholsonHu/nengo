@@ -554,7 +554,7 @@ def test_custom_type(Simulator):
         modifies = 'decoders'
 
         def __init__(self):
-            super(TestRule, self).__init__(1.0, size_in=3)
+            super().__init__(1.0, size_in=3)
 
     @Builder.register(TestRule)
     def build_test_rule(model, test_rule, rule):

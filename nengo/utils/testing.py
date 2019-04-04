@@ -121,7 +121,7 @@ class Analytics(Recorder):
     DOC_KEY = 'documentation'
 
     def __init__(self, dirname, module_name, function_name):
-        super(Analytics, self).__init__(dirname, module_name, function_name)
+        super().__init__(dirname, module_name, function_name)
 
         self.data = {}
         self.doc = {}
@@ -403,7 +403,7 @@ class ThreadedAssertion:
 
     class AssertionWorker(threading.Thread):
         def __init__(self, parent, barriers, n):
-            super(ThreadedAssertion.AssertionWorker, self).__init__()
+            super().__init__()
             self.parent = parent
             self.barriers = barriers
             self.n = n
