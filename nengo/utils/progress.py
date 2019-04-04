@@ -1,7 +1,5 @@
 """Utilities for progress tracking and display to the user."""
 
-from __future__ import absolute_import, division
-
 from datetime import timedelta
 from html import escape
 import importlib

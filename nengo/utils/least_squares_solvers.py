@@ -6,8 +6,6 @@ For example::
 
 """
 
-from __future__ import absolute_import
-
 import numpy as np
 
 import nengo.utils.numpy as npext

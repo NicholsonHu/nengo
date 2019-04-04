@@ -33,8 +33,6 @@ order as each one gives the start of the next header (corresponding to the
 end of the array data).
 """
 
-from __future__ import absolute_import
-
 import os
 import pickle
 import struct
