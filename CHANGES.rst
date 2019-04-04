@@ -98,6 +98,8 @@ Release History
   `#1179 <https://github.com/nengo/nengo/pull/1179>`__)
 - Nengo no longer supports Python 3.4 (official 3.4 support ended in
   March 2019, see https://www.python.org/dev/peps/pep-0429/).
+- ``nengo.utils.compat`` will be removed in the next minor release.
+  (`#1520 <https://github.com/nengo/nengo/pull/1520>`_)
 
 **Removed**
 
