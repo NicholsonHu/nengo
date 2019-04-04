@@ -39,7 +39,7 @@ from nengo.utils.functions import function_name
 import nengo.utils.numpy as npext
 
 
-class Operator(object):
+class Operator:
     """Base class for operator instances understood by Nengo.
 
     During one simulator timestep, a `.Signal` can experience

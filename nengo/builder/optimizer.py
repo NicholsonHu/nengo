@@ -118,7 +118,7 @@ def optimize(model, dg, max_passes=None):
         model.add_op(op)
 
 
-class OpMergePass(object):
+class OpMergePass:
     def __init__(self, dg):
         self.dg = BidirectionalDAG(dg)
         self.might_merge = set(dg)
@@ -392,7 +392,7 @@ class OpInfo(Mapping):
         self.info.clear()
 
 
-class OpsToMerge(object):
+class OpsToMerge:
     """Analyze and store extra information about a list of ops to be merged."""
 
     def __init__(self, initial_op, merged, merged_dependents, dependents):
@@ -440,7 +440,7 @@ class OpsToMerge(object):
         return (lastop.v_offset + lastop.v_size < self.opinfo[op].v_offset)
 
 
-class OpMerger(object):
+class OpMerger:
     mergers = {}
 
     @classmethod
@@ -482,7 +482,7 @@ class OpMerger(object):
         return register
 
 
-class Merger(object):
+class Merger:
     @staticmethod
     def check_signals(op, tomerge):
         return len(tomerge.all_signals.intersection(op.all_signals)) == 0
@@ -715,7 +715,7 @@ class SimNeuronsMerger(Merger):
                 Merger.merge_dicts(J_sigr, out_sigr, states_sigr))
 
 
-class SigMerger(object):
+class SigMerger:
 
     @staticmethod
     def check(signals, axis=0):

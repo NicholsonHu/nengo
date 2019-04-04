@@ -137,7 +137,7 @@ class NengoObject(SupportDefaultsMixin, metaclass=NetworkMember):
         return c
 
 
-class ObjView(object):
+class ObjView:
     """Container for a slice with respect to some object.
 
     This is used by the __getitem__ of Neurons, Node, and Ensemble, in order

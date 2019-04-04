@@ -264,7 +264,7 @@ class Convolution(Transform):
         return ChannelShape(output_shape, channels_last=self.channels_last)
 
 
-class ChannelShape(object):
+class ChannelShape:
     """Represents shape information with variable channel position.
 
     Parameters

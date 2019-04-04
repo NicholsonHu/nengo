@@ -295,7 +295,7 @@ def test_cosine_intercept(d, p, rng):
 
 def test_distorarrayparam():
     """DistOrArrayParams can be distributions or samples."""
-    class Test(object):
+    class Test:
         dp = DistOrArrayParam('dp', default=None, sample_shape=['*', '*'])
 
     inst = Test()
@@ -312,7 +312,7 @@ def test_distorarrayparam():
 
 def test_distorarrayparam_sample_shape():
     """sample_shape dictates the shape of the sample that can be set."""
-    class Test(object):
+    class Test:
         dp = DistOrArrayParam('dp', default=None, sample_shape=['d1', 10])
         d1 = 4
 

@@ -21,7 +21,7 @@ from nengo.rc import rc
 from nengo.utils.threading import ThreadLocalStack
 
 
-class ClassParams(object):
+class ClassParams:
     """A class to store extra parameters and defaults on configured classes.
 
     This is used by `.Config` to associate defaults and new `.Parameter`
@@ -149,7 +149,7 @@ class ClassParams(object):
             setattr(self, key, d[key])
 
 
-class InstanceParams(object):
+class InstanceParams:
     """A class to store parameter value on configured objects.
 
     In contrast to `.ClassParams`, the only thing that can be done with
@@ -244,7 +244,7 @@ class InstanceParams(object):
                           % type(self._configures).__name__)
 
 
-class Config(object):
+class Config:
     """Configures network-level defaults and additional parameters.
 
     Every `.Network` contains an associated ``Config`` object which can
@@ -298,7 +298,7 @@ class Config(object):
 
     To configure a new type of object::
 
-        class SynapseInfo(object):
+        class SynapseInfo:
             label = nengo.params.StringParam('label')
         gaba.configures(SynapseInfo)
         gaba[SynapseInfo].label = "GABA"  # Set default label
@@ -433,7 +433,7 @@ class Config(object):
             self.params[klass] = ClassParams(klass)
 
 
-class SupportDefaultsMixin(object):
+class SupportDefaultsMixin:
     """Mixin to support assigning `.Default` to parameters.
 
     Implements ``__setattr__`` to do so. If the inheriting class overrides
