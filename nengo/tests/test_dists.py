@@ -126,7 +126,8 @@ def test_choice(weights, rng):
     with pytest.raises(ValueError):
         dist.sample(n, d=4, rng=rng)
     sample = dist.sample(n, rng=rng)
-    tsample, tchoices = list(map(tuple, sample)), list(map(tuple, choices))
+    tsample = [tuple(point) for point in sample]
+    tchoices = [tuple(choice) for choice in choices]
 
     # check that frequency of choices matches weights
     inds = [tchoices.index(s) for s in tsample]
