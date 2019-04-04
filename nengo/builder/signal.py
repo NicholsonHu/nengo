@@ -96,7 +96,7 @@ class Signal:
         if not all(is_integer(i) or isinstance(i, slice) for i in item):
             raise SignalError("Can only index or slice into signals")
 
-        if all(map(is_integer, item)):
+        if all(is_integer(i) for i in item):
             # turn one index into slice to get a view from numpy
             item = item[:-1] + (slice(item[-1], item[-1]+1),)
 
