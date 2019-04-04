@@ -164,8 +164,8 @@ def test_stringparam():
     inst = Test()
     assert inst.sp == "Hi"
 
-    inst.sp = u"goodbye"
-    assert inst.sp == u"goodbye"
+    inst.sp = "goodbye"
+    assert inst.sp == "goodbye"
 
     # Bytes no good
     with pytest.raises(ValidationError):

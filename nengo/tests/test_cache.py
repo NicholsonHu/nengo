@@ -276,7 +276,7 @@ def dummy_fn(arg):
     (b'a', b'a', b'b'),              # bytes
     ((0, 1), (0, 1), (0, 2)),        # tuple
     ([0, 1], [0, 1], [0, 2]),        # list
-    (u'a', u'a', u'b'),              # unicode string
+    ('a', 'a', 'b'),                 # str
     (np.eye(2), np.eye(2), np.array([[0, 1], [1, 0]])),      # array
     (DummyA(), DummyA(), DummyB()),  # object instance
     (DummyA(1), DummyA(1), DummyA(2)),     # object instance
