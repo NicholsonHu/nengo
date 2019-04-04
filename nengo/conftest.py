@@ -15,7 +15,7 @@ import nengo.utils.numpy as npext
 from nengo.neurons import (Direct, LIF, LIFRate, RectifiedLinear,
                            Sigmoid, SpikingRectifiedLinear)
 from nengo.rc import rc
-from nengo.utils.compat import ensure_bytes, is_string
+from nengo.utils.compat import ensure_bytes
 from nengo.utils.testing import Analytics, Logger, Plotter
 
 
@@ -109,7 +109,7 @@ def recorder_dirname(request, name):
     artifacts should not be saved.
     """
     record = request.config.getvalue(name)
-    if is_string(record):
+    if isinstance(record, str):
         return record
     elif not record:
         return None

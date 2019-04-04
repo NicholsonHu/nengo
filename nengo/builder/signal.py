@@ -4,7 +4,6 @@ import numpy as np
 
 import nengo.utils.numpy as npext
 from nengo.exceptions import SignalError
-from nengo.utils.compat import is_integer
 
 
 class Signal:
@@ -93,10 +92,10 @@ class Signal:
         if not isinstance(item, tuple):
             item = (item,)
 
-        if not all(is_integer(i) or isinstance(i, slice) for i in item):
+        if not all(isinstance(i, (int, slice)) for i in item):
             raise SignalError("Can only index or slice into signals")
 
-        if all(is_integer(i) for i in item):
+        if all(isinstance(i, int) for i in item):
             # turn one index into slice to get a view from numpy
             item = item[:-1] + (slice(item[-1], item[-1]+1),)
 

@@ -5,8 +5,7 @@ import numpy as np
 
 from nengo.exceptions import (
     ConfigError, ObsoleteError, ReadonlyError, ValidationError)
-from nengo.utils.compat import (
-    is_array, is_array_like, is_integer, is_number, is_string)
+from nengo.utils.compat import is_array, is_array_like, is_number
 from nengo.utils.numpy import array_hash, compare
 from nengo.utils.stdlib import WeakKeyIDDictionary, checked_call
 
@@ -79,7 +78,7 @@ class Parameter:
         # freeze Unconfigurables by default
         readonly = default is Unconfigurable if readonly is None else readonly
 
-        if not is_string(name):
+        if not isinstance(name, str):
             raise ValueError("'name' must be a string (got %r)" % name)
         if not isinstance(optional, bool):
             raise ValueError("'optional' must be boolean (got %r)" % optional)
@@ -290,7 +289,7 @@ class EnumParam(StringParam):
 
     def __init__(self, name, default=Unconfigurable, values=(), lower=True,
                  optional=False, readonly=None):
-        assert all(is_string(s) for s in values)
+        assert all(isinstance(s, str) for s in values)
         if lower:
             values = tuple(s.lower() for s in values)
         value_set = set(values)
@@ -350,7 +349,7 @@ class ShapeParam(TupleParam):
     def coerce(self, instance, value):
         value = super().coerce(instance, value)
         for i, v in enumerate(value):
-            if not is_integer(v):
+            if not isinstance(v, int):
                 raise ValidationError("Element %d must be an int (got type %r)"
                                       % (i, type(v).__name__),
                                       attr=self.name, obj=instance)
@@ -392,7 +391,7 @@ class NdarrayParam(Parameter):
     def coerce_defaults(self):
         if self.shape is None:
             return True
-        return all(is_integer(dim) or dim in ('...', '*')
+        return all(isinstance(dim, int) or dim in ('...', '*')
                    for dim in self.shape)
 
     def hashvalue(self, instance):
@@ -442,14 +441,15 @@ class NdarrayParam(Parameter):
                                   attr=self.name, obj=instance)
 
         for i, attr in enumerate(shape):
-            assert is_integer(attr) or is_string(attr), (
+            assert isinstance(attr, (int, str)), (
                 "shape can only be an int or str representing an attribute")
             if attr == '*':
                 continue
 
-            desired = attr if is_integer(attr) else getattr(instance, attr)
+            desired = (attr if isinstance(attr, int)
+                       else getattr(instance, attr))
 
-            if not is_integer(desired):
+            if not isinstance(desired, int):
                 raise ValidationError(
                     "%s not yet initialized; cannot determine if shape is "
                     "correct. Consider using a distribution instead." % attr,
@@ -553,7 +553,7 @@ class FrozenObject:
         self.__dict__.update(state)
 
     def __repr__(self):
-        if is_string(self._argreprs):
+        if isinstance(self._argreprs, str):
             return "<%s at 0x%x>" % (type(self).__name__, id(self))
         return "%s(%s)" % (type(self).__name__, ", ".join(self._argreprs))
 

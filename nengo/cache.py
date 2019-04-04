@@ -41,7 +41,6 @@ from nengo.solvers import (
 )
 from nengo.utils import nco
 from nengo.utils.cache import byte_align, bytes2human, human2bytes
-from nengo.utils.compat import is_string
 from nengo.utils.least_squares_solvers import (
     Cholesky, ConjgradScipy, LSMRScipy, Conjgrad,
     BlockConjgrad, SVD, RandomizedSVD)
@@ -611,7 +610,7 @@ class DecoderCache:
 
         if limit is None:
             limit = rc.get('decoder_cache', 'size')
-        if is_string(limit):
+        if isinstance(limit, str):
             limit = human2bytes(limit)
 
         self._close_fd()
