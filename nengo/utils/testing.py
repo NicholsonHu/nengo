@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from inspect import getfullargspec
 import itertools
 import logging
