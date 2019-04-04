@@ -1,10 +1,12 @@
 from __future__ import division
 
+from io import StringIO
+
 import numpy as np
 
 import nengo.utils.numpy as npext
 from nengo.exceptions import SignalError
-from nengo.utils.compat import StringIO, is_integer
+from nengo.utils.compat import is_integer
 
 
 class Signal(object):

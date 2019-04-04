@@ -5,7 +5,7 @@ from __future__ import absolute_import
 
 import numpy as np
 
-from .compat import PY2, is_integer, is_iterable
+from .compat import is_integer, is_iterable
 from ..exceptions import ValidationError
 
 maxint = np.iinfo(np.int32).max
@@ -71,14 +71,14 @@ def array_hash(a, n=100):
         # hash all elements
         v = a.view()
         v.setflags(write=False)
-        return hash(v.data if PY2 else v.data.tobytes())
+        return hash(v.data.tobytes())
     else:
         # pick random elements to hash
         rng = np.random.RandomState(a.size)
         inds = tuple(rng.randint(0, a.shape[i], size=n) for i in range(a.ndim))
         v = a[inds]
         v.setflags(write=False)
-        return hash(v.data if PY2 else v.data.tobytes())
+        return hash(v.data.tobytes())
 
 
 def array_offset(x):

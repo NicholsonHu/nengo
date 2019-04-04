@@ -5,7 +5,7 @@ from nengo.exceptions import ValidationError
 from nengo.params import (Default, IntParam, FrozenObject, NumberParam,
                           Parameter, Unconfigurable)
 from nengo.synapses import Lowpass, SynapseParam
-from nengo.utils.compat import is_iterable, is_string, itervalues
+from nengo.utils.compat import is_iterable, is_string
 
 
 class LearningRuleTypeSizeInParam(IntParam):
@@ -400,7 +400,7 @@ class LearningRuleTypeParam(Parameter):
 
     def coerce(self, instance, rule):
         if is_iterable(rule):
-            for r in (itervalues(rule) if isinstance(rule, dict) else rule):
+            for r in (rule.values() if isinstance(rule, dict) else rule):
                 self.check_rule(instance, r)
         elif rule is not None:
             self.check_rule(instance, rule)

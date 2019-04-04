@@ -4,6 +4,7 @@ import collections
 import os
 import subprocess
 import sys
+import warnings
 
 import numpy as np
 
@@ -12,6 +13,9 @@ PY2 = sys.version_info[0] == 2
 
 # If something's changed from Python 2 to 3, we handle that here
 if PY2:
+    warnings.warn("Python 2 compatibility has been dropped from Nengo as of "
+                  "version 3.0.0; many parts of nengo.utils.compat will be "
+                  "removed in the next minor release.")
     from cgi import escape as cgi_escape
     import cPickle as pickle
     import ConfigParser as configparser
@@ -147,21 +151,3 @@ def is_array_like(obj):
     # that can be made into arrays, it's very likely that those arrays
     # will have dtype=object, which is likely to cause unexpected issues.
     return is_array(obj) or is_number(obj) or isinstance(obj, (list, tuple))
-
-
-def with_metaclass(meta, *bases):
-    """Function for creating a class with a metaclass.
-
-    The syntax for this changed between Python 2 and 3.
-    Code snippet from Armin Ronacher:
-    http://lucumr.pocoo.org/2013/5/21/porting-to-python-3-redux/
-    """
-    class metaclass(meta):
-        __call__ = type.__call__
-        __init__ = type.__init__
-
-        def __new__(cls, name, this_bases, d):
-            if this_bases is None:
-                return type.__new__(cls, name, (), d)
-            return meta(name, bases, d)
-    return metaclass('temporary_class', None, {})

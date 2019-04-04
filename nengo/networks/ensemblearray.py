@@ -4,7 +4,7 @@ import numpy as np
 
 import nengo
 from nengo.exceptions import ValidationError
-from nengo.utils.compat import is_iterable, range
+from nengo.utils.compat import is_iterable
 from nengo.utils.network import with_self
 
 

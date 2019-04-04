@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from inspect import getfullargspec
 import itertools
 import logging
 import os
@@ -10,7 +11,7 @@ import time
 
 import numpy as np
 
-from .compat import getfullargspec, is_string, reraise
+from .compat import is_string
 from .logging import CaptureLogHandler, console_formatter
 
 
@@ -436,7 +437,7 @@ class ThreadedAssertion(object):
         for t in threads:
             t.join()
             if not t.assertion_result:
-                reraise(*t.exc_info)
+                raise self.exc_info[0].with_traceback(*self.exc_info[1:])
 
     def init_thread(self, worker):
         pass

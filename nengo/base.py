@@ -15,7 +15,7 @@ from nengo.params import (
     StringParam,
     Unconfigurable,
 )
-from nengo.utils.compat import is_integer, iteritems, range, with_metaclass
+from nengo.utils.compat import is_integer
 from nengo.utils.numpy import as_shape, maxint
 
 
@@ -39,7 +39,7 @@ class NetworkMember(type):
         return inst
 
 
-class NengoObject(with_metaclass(NetworkMember, SupportDefaultsMixin)):
+class NengoObject(SupportDefaultsMixin, metaclass=NetworkMember):
     """A base class for Nengo objects.
 
     Parameters
@@ -91,7 +91,7 @@ class NengoObject(with_metaclass(NetworkMember, SupportDefaultsMixin)):
             if attr in state:
                 setattr(self, attr, state.pop(attr))
 
-        for k, v in iteritems(state):
+        for k, v in state.items():
             setattr(self, k, v)
 
         self._initialized = True
