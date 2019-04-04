@@ -47,7 +47,7 @@ class ClassParams:
 
     def __delattr__(self, key):
         if key.startswith("_"):
-            super(ClassParams, self).__delattr__(key)
+            super().__delattr__(key)
         else:
             self.get_param(key).del_default(self)
 
@@ -64,7 +64,7 @@ class ClassParams:
         Everything not starting with _ is assumed to be a parameter.
         """
         if key.startswith("_"):
-            super(ClassParams, self).__setattr__(key, value)
+            super().__setattr__(key, value)
         else:
             param = self.get_param(key)
             if not param.configurable:
@@ -167,7 +167,7 @@ class InstanceParams:
 
     def __delattr__(self, key):
         if key.startswith("_"):
-            super(InstanceParams, self).__delattr__(key)
+            super().__delattr__(key)
         elif key in dir(self._configures):
             # Disallow configuring attributes the instance already has
             raise ConfigError(
@@ -191,7 +191,7 @@ class InstanceParams:
     def __setattr__(self, key, value):
         """Everything not starting with _ is assumed to be a parameter."""
         if key.startswith("_"):
-            super(InstanceParams, self).__setattr__(key, value)
+            super().__setattr__(key, value)
         elif key in dir(self._configures):
             # Disallow configuring attributes the instance already has
             raise ConfigError(
@@ -449,9 +449,9 @@ class SupportDefaultsMixin:
 
         if rc.getboolean('exceptions', 'simplified'):
             try:
-                super(SupportDefaultsMixin, self).__setattr__(name, val)
+                super().__setattr__(name, val)
             except ValidationError:
                 exc_info = sys.exc_info()
                 raise exc_info[1].with_traceback(None)
         else:
-            super(SupportDefaultsMixin, self).__setattr__(name, val)
+            super().__setattr__(name, val)

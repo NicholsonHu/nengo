@@ -154,7 +154,7 @@ class BoundFunctionWrapper(ObjectProxy):
     __slots__ = ('instance', 'wrapper', 'binding', 'parent')
 
     def __init__(self, wrapped, instance, wrapper, binding, parent):
-        super(BoundFunctionWrapper, self).__init__(wrapped)
+        super().__init__(wrapped)
         # Using object.__setattr__ to subvert ObjectProxy.__setattr__
         object.__setattr__(self, 'instance', instance)
         object.__setattr__(self, 'wrapper', wrapper)
@@ -193,7 +193,7 @@ class FunctionWrapper(ObjectProxy):
     __slots__ = ('wrapper', 'binding')
 
     def __init__(self, wrapped, wrapper):
-        super(FunctionWrapper, self).__init__(wrapped)
+        super().__init__(wrapped)
         # Using object.__setattr__ to subvert ObjectProxy.__setattr__
         object.__setattr__(self, 'wrapper', wrapper)
         if isinstance(wrapped, classmethod):

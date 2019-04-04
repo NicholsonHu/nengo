@@ -379,7 +379,7 @@ def test_frozenobject_reprs():
         b = params.NumberParam('b')
 
         def __init__(self, a, b=4):
-            super(TestFO, self).__init__()
+            super().__init__()
             self.a = a
             self.b = b
 
@@ -395,7 +395,7 @@ def test_frozenobject_missing_arg_repr():
         a = params.NumberParam('a', default=3, readonly=True)
 
         def __init__(self, a, b=4):
-            super(TestFO, self).__init__()
+            super().__init__()
             self.a = a
 
     fo = TestFO(3)

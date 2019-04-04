@@ -164,7 +164,7 @@ class IPython2ProgressBar(ProgressBar):
         warnings.warn(
             "IPython2ProgressBar is deprecated. Please upgrade to IPython "
             "version 5 or later.", DeprecationWarning)
-        super(IPython2ProgressBar, self).__init__(task)
+        super().__init__(task)
         self._escaped_task = escape(task)
         self._widget = IPythonProgressWidget()
         self._initialized = False
