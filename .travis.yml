@@ -17,7 +17,7 @@ dist: trusty
 env:
   global:
     - SCRIPT="test"
-    - PYTHON_VERSION="2.7"
+    - PYTHON_VERSION="3.6"
     - PIP_UPGRADE="true"  # always upgrade to latest version
     - PIP_UPGRADE_STRATEGY="eager"  # upgrade all dependencies
     - TEST_ARGS=""
@@ -34,16 +34,15 @@ jobs:
     stage: basic
   -
     env:
-      PYTHON_VERSION="3.6"
       SCRIPT="test-coverage-scipy"
       TEST_ARGS="--plots"
   -
     env:
       SCRIPT="test-coverage"
       TEST_ARGS="--plots"
+      PYTHON_VERSION="3.5"
   -
     env:
-      PYTHON_VERSION="3.6"
       SCRIPT="docs"
     stage: advanced
   -
@@ -59,6 +58,9 @@ jobs:
   -
     env:
       NUMPY_VERSION="numpy=1.14"
+  -
+    env:
+      NUMPY_VERSION="numpy=1.15"
   -
     env:
       PYTHON_VERSION="3.5"
