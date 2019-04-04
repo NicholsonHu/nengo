@@ -1,7 +1,5 @@
 """Functions for easy interactions with IPython and IPython notebooks."""
 
-from __future__ import absolute_import
-
 import io
 
 import numpy as np

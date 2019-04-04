@@ -2,8 +2,6 @@
 Functions that extend the Python Standard Library.
 """
 
-from __future__ import absolute_import
-
 import collections
 import inspect
 import itertools

@@ -1,5 +1,3 @@
-from __future__ import division
-
 from io import StringIO
 
 import numpy as np

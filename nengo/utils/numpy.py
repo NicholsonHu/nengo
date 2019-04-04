@@ -1,8 +1,6 @@
 """
 Extra functions to extend the capabilities of Numpy.
 """
-from __future__ import absolute_import
-
 import numpy as np
 
 from .compat import is_integer, is_iterable
