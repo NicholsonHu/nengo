@@ -11,26 +11,25 @@ env:
     - NUMPY="numpy"
     - SCIPY="false"
     - COVERAGE="false"
-    - PYTHON="3.7"
 
 jobs:
   include:
     - stage: basic
-      env: MODE="static"
-    - env: MODE="test" COVERAGE="true" SCIPY="true"
-    - env: MODE="docs"
+      env: MODE="static" PYTHON="3.7"
+    - env: MODE="test" PYTHON="3.7" COVERAGE="true" SCIPY="true"
+    - env: MODE="docs" PYTHON="3.7"
     - stage: advanced
-      env: MODE="test" NUMPY="numpy=1.11"
+      env: MODE="test" PYTHON="3.7" NUMPY="numpy=1.11"
       cache: false  # disable the cache for one build to make sure that works
-    - env: MODE="test" NUMPY="numpy=1.12"
-    - env: MODE="test" NUMPY="numpy=1.13"
-    - env: MODE="test" NUMPY="numpy=1.14"
+    - env: MODE="test" PYTHON="3.7" NUMPY="numpy=1.12"
+    - env: MODE="test" PYTHON="3.7" NUMPY="numpy=1.13"
+    - env: MODE="test" PYTHON="3.7" NUMPY="numpy=1.14"
     # Newer NumPy not packaged for older Pythons in conda
     - env: MODE="test" PYTHON="3.4" NUMPY="numpy=1.13.0"
     - env: MODE="test" PYTHON="3.5" NUMPY="numpy=1.15.2"
     - stage: deploy
       if: branch =~ ^release-candidate-* OR tag =~ ^v[0-9]*
-      env: MODE="deploy"
+      env: MODE="deploy" PYTHON="3.7"
       deploy:
         - provider: pypi
           server: https://test.pypi.org/legacy/
