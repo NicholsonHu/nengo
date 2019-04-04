@@ -339,7 +339,7 @@ def test_present_input(Simulator, rng):
         assert np.allclose(image, images[ii], rtol=1e-4, atol=1e-7), (k, ii)
 
 
-class TestPiecewise(object):
+class TestPiecewise:
 
     def run_sim(self, data, interpolation, Simulator):
         process = Piecewise(data, interpolation=interpolation)

@@ -43,7 +43,7 @@ def _load_class(name):
     return getattr(mod, cls_name)
 
 
-class Progress(object):
+class Progress:
     """Stores and tracks information about the progress of some process.
 
     This class is to be used as part of a ``with`` statement. Use ``step()`` to
@@ -167,7 +167,7 @@ class Progress(object):
         self.n_steps += n
 
 
-class ProgressBar(object):
+class ProgressBar:
     """Visualizes the progress of a process.
 
     This is an abstract base class that progress bar classes some inherit from.
@@ -413,7 +413,7 @@ class HtmlProgressBar(ProgressBar):
         else:
             self._handle.update(self._js_update(progress))
 
-    class _HtmlBase(object):
+    class _HtmlBase:
         def __init__(self, uuid):
             self.uuid = uuid
 
@@ -581,7 +581,7 @@ class IPython5ProgressBar(ProgressBar):
     def __init__(self):
         super(IPython5ProgressBar, self).__init__()
 
-        class Displayable(object):
+        class Displayable:
             def __init__(self):
                 self.display_requested = False
 
@@ -662,7 +662,7 @@ class AutoProgressBar(ProgressBar):
         self.delegate.close()
 
 
-class ProgressTracker(object):
+class ProgressTracker:
     """Tracks the progress of some process with a progress bar.
 
     Parameters

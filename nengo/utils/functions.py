@@ -137,7 +137,7 @@ def piecewise(data):
     return piecewise_function
 
 
-class HilbertCurve(object):
+class HilbertCurve:
     """Hilbert curve function.
 
     Pre-calculates the Hilbert space filling curve with a given number

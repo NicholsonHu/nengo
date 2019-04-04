@@ -185,7 +185,7 @@ class Ensemble(NengoObject):
         return self.dimensions
 
 
-class Neurons(object):
+class Neurons:
     """An interface for making connections directly to an ensemble's neurons.
 
     This should only ever be accessed through the ``neurons`` attribute of an

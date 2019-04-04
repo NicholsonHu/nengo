@@ -277,7 +277,7 @@ else:
         return terminal_size(w, h)
 
 
-class Timer(object):
+class Timer:
     """A context manager for timing a block of code.
 
     Attributes

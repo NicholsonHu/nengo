@@ -10,7 +10,7 @@ from nengo.solvers import NnlsL2nz
 
 
 # connection weights from (Gurney, Prescott, & Redgrave, 2001)
-class Weights(object):
+class Weights:
     mm = 1
     mp = 1
     me = 1

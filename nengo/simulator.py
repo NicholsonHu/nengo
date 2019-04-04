@@ -59,7 +59,7 @@ class ProbeDict(Mapping):
         self._cache.clear()
 
 
-class Simulator(object):
+class Simulator:
     """Reference simulator for Nengo models.
 
     The simulator takes a `.Network` and builds internal data structures to
