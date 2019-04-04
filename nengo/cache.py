@@ -351,7 +351,7 @@ class WriteableCacheIndex(CacheIndex):
         Path where the cache is stored.
     """
     def __init__(self, cache_dir):
-        super(WriteableCacheIndex, self).__init__(cache_dir)
+        super().__init__(cache_dir)
         self._lock = FileLock(self.index_path + '.lock')
         self._updates = {}
         self._deletes = set()
@@ -361,7 +361,7 @@ class WriteableCacheIndex(CacheIndex):
         if key in self._updates:
             return self._updates[key]
         else:
-            return super(WriteableCacheIndex, self).__getitem__(key)
+            return super().__getitem__(key)
 
     def __setitem__(self, key, value):
         if not isinstance(value, tuple) or len(value) != 3:

@@ -485,4 +485,4 @@ class VocabularyParam(Parameter):
 
     def coerce(self, instance, vocab):
         self.check_type(instance, vocab, Vocabulary)
-        return super(VocabularyParam, self).coerce(instance, vocab)
+        return super().coerce(instance, vocab)
