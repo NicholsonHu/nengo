@@ -15,7 +15,7 @@ def test_unsupported(testdir):
         """
         import nengo.conftest
 
-        class MockSimulator(object):
+        class MockSimulator:
             unsupported = [('*', 'mock simulator')]
 
         nengo.conftest.TestConfig.Simulator = MockSimulator

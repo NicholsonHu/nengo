@@ -15,7 +15,7 @@ from .compat import is_string
 from .logging import CaptureLogHandler, console_formatter
 
 
-class Mock(object):
+class Mock:
     def __init__(self, *args, **kwargs):
         pass
 
@@ -43,7 +43,7 @@ class Mock(object):
             return Mock()
 
 
-class Recorder(object):
+class Recorder:
     def __init__(self, dirname, module_name, function_name):
         self.dirname = dirname
         self.module_name = module_name
@@ -396,7 +396,7 @@ def load_functions(modules, pattern='^test_', arg_pattern='^Simulator$'):
     return tests
 
 
-class ThreadedAssertion(object):
+class ThreadedAssertion:
     """Performs assertions in parallel.
 
     Starts a number of threads, waits for each thread to execute some

@@ -47,7 +47,7 @@ import functools
 import inspect
 
 
-class ObjectProxyMethods(object):
+class ObjectProxyMethods:
     """Properly override __module__ and __doc__.
 
     If we add these in ObjectProxy, the derived class __dict__ will
@@ -243,7 +243,7 @@ def decorator(wrapper):
         def my_decorator(wrapped, instance, args, kwargs):
             return wrapped(*args, **kwargs)
 
-        class MyClass(object):
+        class MyClass:
             @my_decorator
             def f(self):
                 return self.num + 1

@@ -22,7 +22,7 @@ def test_checked_call():
 
     func4 = lambda x=[0]: sum(x)
 
-    class A(object):
+    class A:
         def __call__(self, a, b):
             return a + b
 
@@ -58,7 +58,7 @@ def test_checked_call():
 
 
 def test_checked_call_errors():
-    class A(object):
+    class A:
         def __call__(self, a):
             raise NotImplementedError()
 

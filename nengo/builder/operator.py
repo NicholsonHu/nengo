@@ -40,7 +40,7 @@ from nengo.utils.functions import function_name
 from nengo.exceptions import BuildError, SimulationError
 
 
-class Operator(object):
+class Operator:
     """Base class for operator instances understood by Nengo.
 
     During one simulator timestep, a `.Signal` can experience

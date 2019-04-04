@@ -99,7 +99,7 @@ def check_attrs(obj):
     return all(Fingerprint.supports(x) for x in attrs if not callable(x))
 
 
-class Fingerprint(object):
+class Fingerprint:
     """Fingerprint of an object instance.
 
     A finger print is equal for two instances if and only if they are of the
@@ -214,7 +214,7 @@ class Fingerprint(object):
             cls.CHECKS[typ] = fn
 
 
-class CacheIndex(object):
+class CacheIndex:
     """Cache index mapping keys to (filename, start, end) tuples.
 
     Once instantiated the cache index has to be used in a ``with`` block to
@@ -471,7 +471,7 @@ class WriteableCacheIndex(CacheIndex):
         self._removed_files.clear()
 
 
-class DecoderCache(object):
+class DecoderCache:
     """Cache for decoders.
 
     Hashes the arguments to the decoder solver and stores the result in a file
@@ -736,7 +736,7 @@ class DecoderCache(object):
         return os.path.join(directory, suffix + self._CACHE_EXT)
 
 
-class NoDecoderCache(object):
+class NoDecoderCache:
     """Provides the same interface as `.DecoderCache` without caching."""
 
     def __enter__(self):

@@ -41,6 +41,7 @@ enable = anomalous-backslash-in-string,
          unreachable,
          unused-import,
          useless-else-on-loop,
+         useless-object-inheritance,
          wrong-import-order,
 
 

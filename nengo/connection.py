@@ -533,7 +533,7 @@ class Connection(NengoObject):
         return self.post.size_in
 
 
-class LearningRule(object):
+class LearningRule:
     """An interface for making connections to a learning rule.
 
     Connections to a learning rule are to allow elements of the network to

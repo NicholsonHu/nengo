@@ -9,7 +9,7 @@ from nengo.exceptions import SignalError
 from nengo.utils.compat import is_integer
 
 
-class Signal(object):
+class Signal:
     """Represents data or views onto data within a Nengo simulation.
 
     Signals are tightly coupled to NumPy arrays, which is how live data is

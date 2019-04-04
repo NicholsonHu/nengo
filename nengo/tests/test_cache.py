@@ -15,7 +15,7 @@ from nengo.exceptions import CacheIOWarning, FingerprintError
 from nengo.solvers import LstsqL2
 
 
-class SolverMock(object):
+class SolverMock:
     n_calls = {}
 
     def __init__(self):
@@ -247,7 +247,7 @@ def test_decoder_cache_with_E_argument_to_solver(tmpdir):
         assert solver_info1 == solver_info2
 
 
-class DummyA(object):
+class DummyA:
     def __init__(self, attr=0):
         self.attr = attr
 
@@ -255,7 +255,7 @@ class DummyA(object):
 nengo.cache.Fingerprint.whitelist(DummyA)
 
 
-class DummyB(object):
+class DummyB:
     def __init__(self, attr=0):
         self.attr = attr
 
@@ -363,7 +363,7 @@ def reject_outliers(data):
     return np.asarray(data)[np.logical_and(data > limits[0], data < limits[1])]
 
 
-class TestCacheBenchmark(object):
+class TestCacheBenchmark:
     n_trials = 25
 
     setup = '''
@@ -520,7 +520,7 @@ with nengo.Simulator(model):
         plt.legend(loc='best')
 
 
-class TestCacheShrinkBenchmark(object):
+class TestCacheShrinkBenchmark:
     n_trials = 50
 
     setup = '''

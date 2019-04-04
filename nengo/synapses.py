@@ -255,7 +255,7 @@ class LinearFilter(Synapse):
 
         return LinearFilter.NoDen(np.array([1.]), np.array([]), output)
 
-    class Step(object):
+    class Step:
         """Abstract base class for LTI filtering step functions."""
         def __init__(self, num, den, output):
             self.num = num

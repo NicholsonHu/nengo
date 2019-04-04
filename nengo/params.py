@@ -43,7 +43,7 @@ def equal(a, b):
         return a == b
 
 
-class Parameter(object):
+class Parameter:
     """Simple descriptor for storing configuration parameters.
 
     Parameters
@@ -494,7 +494,7 @@ class FunctionParam(Parameter):
         return function_info
 
 
-class FrozenObject(object):
+class FrozenObject:
     """An object with parameters that cannot change value after instantiation.
 
     Since such objects are read-only ("frozen"), they can be safely used in

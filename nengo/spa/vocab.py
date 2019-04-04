@@ -8,7 +8,7 @@ from nengo.spa import pointer
 from nengo.utils.compat import is_iterable, is_number, is_integer
 
 
-class Vocabulary(object):
+class Vocabulary:
     """A collection of semantic pointers, each with their own text label.
 
     The Vocabulary can also act as a dictionary, with keys as the names
