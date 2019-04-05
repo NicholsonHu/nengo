@@ -25,9 +25,8 @@ jobs:
     - env: MODE="test" NUMPY="numpy=1.12"
     - env: MODE="test" NUMPY="numpy=1.13"
     - env: MODE="test" NUMPY="numpy=1.14"
-    # Newer NumPy not packaged for older Pythons in conda
-    - env: MODE="test" PYTHON="3.4" NUMPY="numpy=1.13.0"
-    - env: MODE="test" PYTHON="3.5" NUMPY="numpy=1.15.2"
+    - env: MODE="test" PYTHON="3.4"
+    - env: MODE="test" PYTHON="3.5"
     - stage: deploy
       if: branch =~ ^release-candidate-* OR tag =~ ^v[0-9]*
       env: MODE="deploy"
