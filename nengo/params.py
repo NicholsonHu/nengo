@@ -349,7 +349,7 @@ class ShapeParam(TupleParam):
     def coerce(self, instance, value):
         value = super().coerce(instance, value)
         for i, v in enumerate(value):
-            if not isinstance(v, int):
+            if not isinstance(v, (int, np.integer)):
                 raise ValidationError("Element %d must be an int (got type %r)"
                                       % (i, type(v).__name__),
                                       attr=self.name, obj=instance)
