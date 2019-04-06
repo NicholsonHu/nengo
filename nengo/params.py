@@ -5,9 +5,8 @@ import numpy as np
 
 from nengo.exceptions import (
     ConfigError, ObsoleteError, ReadonlyError, ValidationError)
-from nengo.utils.compat import (
-    is_array, is_array_like, is_integer, is_number, is_string)
-from nengo.utils.numpy import array_hash, compare
+from nengo.utils.numpy import (
+    array_hash, compare, is_array, is_array_like, is_integer, is_number)
 from nengo.utils.stdlib import WeakKeyIDDictionary, checked_call
 
 
@@ -79,7 +78,7 @@ class Parameter:
         # freeze Unconfigurables by default
         readonly = default is Unconfigurable if readonly is None else readonly
 
-        if not is_string(name):
+        if not isinstance(name, str):
             raise ValueError("'name' must be a string (got %r)" % name)
         if not isinstance(optional, bool):
             raise ValueError("'optional' must be boolean (got %r)" % optional)
@@ -290,7 +289,7 @@ class EnumParam(StringParam):
 
     def __init__(self, name, default=Unconfigurable, values=(), lower=True,
                  optional=False, readonly=None):
-        assert all(is_string(s) for s in values)
+        assert all(isinstance(s, str) for s in values)
         if lower:
             values = tuple(s.lower() for s in values)
         value_set = set(values)
@@ -442,7 +441,7 @@ class NdarrayParam(Parameter):
                                   attr=self.name, obj=instance)
 
         for i, attr in enumerate(shape):
-            assert is_integer(attr) or is_string(attr), (
+            assert is_integer(attr) or isinstance(attr, str), (
                 "shape can only be an int or str representing an attribute")
             if attr == '*':
                 continue
@@ -553,7 +552,7 @@ class FrozenObject:
         self.__dict__.update(state)
 
     def __repr__(self):
-        if is_string(self._argreprs):
+        if isinstance(self._argreprs, str):
             return "<%s at 0x%x>" % (type(self).__name__, id(self))
         return "%s(%s)" % (type(self).__name__, ", ".join(self._argreprs))
 
