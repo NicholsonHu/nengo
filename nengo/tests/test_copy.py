@@ -8,7 +8,7 @@ import nengo
 from nengo import spa
 from nengo.exceptions import NetworkContextError, NotAddedToNetworkWarning
 from nengo.params import IntParam, iter_params
-from nengo.utils.compat import is_array_like
+from nengo.utils.numpy import is_array_like
 
 
 def assert_is_copy(cp, original):

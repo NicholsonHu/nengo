@@ -13,7 +13,7 @@ from nengo.exceptions import BuildError, ObsoleteError
 from nengo.neurons import Direct
 from nengo.node import Node
 from nengo.solvers import NoSolver, Solver
-from nengo.utils.compat import is_iterable
+from nengo.utils.numpy import is_iterable
 
 built_attrs = ['eval_points', 'solver_info', 'weights', 'transform']
 

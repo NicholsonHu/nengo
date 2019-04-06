@@ -9,13 +9,19 @@ from nengo.exceptions import ValidationError
 from nengo.learning_rules import LearningRuleType, LearningRuleTypeParam
 from nengo.neurons import Direct
 from nengo.node import Node
-from nengo.params import (Default, Unconfigurable, ObsoleteParam,
-                          BoolParam, FunctionInfo, Parameter)
+from nengo.params import (
+    BoolParam,
+    Default,
+    FunctionInfo,
+    ObsoleteParam,
+    Parameter,
+    Unconfigurable,
+)
 from nengo.solvers import LstsqL2, SolverParam
 from nengo.synapses import Lowpass, SynapseParam
 from nengo.transforms import Dense, Transform
-from nengo.utils.compat import is_array_like, is_iterable
 from nengo.utils.functions import function_name
+from nengo.utils.numpy import is_array_like, is_iterable
 from nengo.utils.stdlib import checked_call
 
 logger = logging.getLogger(__name__)

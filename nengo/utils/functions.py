@@ -4,7 +4,7 @@ import warnings
 import numpy as np
 
 from nengo.exceptions import ValidationError
-from nengo.utils.compat import is_number
+from nengo.utils.numpy import is_number
 
 
 def function_name(func):

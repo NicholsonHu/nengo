@@ -2,17 +2,23 @@ import warnings
 
 from nengo.config import SupportDefaultsMixin
 from nengo.exceptions import ValidationError
-from nengo.params import (Default, IntParam, FrozenObject, NumberParam,
-                          Parameter, Unconfigurable)
+from nengo.params import (
+    Default,
+    IntParam,
+    FrozenObject,
+    NumberParam,
+    Parameter,
+    Unconfigurable,
+)
 from nengo.synapses import Lowpass, SynapseParam
-from nengo.utils.compat import is_iterable, is_string
+from nengo.utils.numpy import is_iterable
 
 
 class LearningRuleTypeSizeInParam(IntParam):
     valid_strings = ('pre', 'post', 'mid', 'pre_state', 'post_state')
 
     def coerce(self, instance, size_in):
-        if is_string(size_in):
+        if isinstance(size_in, str):
             if size_in not in self.valid_strings:
                 raise ValidationError(
                     "%r is not a valid string value (must be one of %s)"

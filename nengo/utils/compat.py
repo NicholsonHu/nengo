@@ -12,8 +12,8 @@ PY2 = sys.version_info[0] == 2
 # If something's changed from Python 2 to 3, we handle that here
 if PY2:
     warnings.warn("Python 2 compatibility has been dropped from Nengo as of "
-                  "version 3.0.0; many parts of nengo.utils.compat will be "
-                  "removed in the next minor release.")
+                  "version 3.0.0; nengo.utils.compat will be removed in the "
+                  "next minor release.")
     from cgi import escape as cgi_escape
     import cPickle as pickle
     import ConfigParser as configparser

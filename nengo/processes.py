@@ -9,7 +9,7 @@ from nengo.exceptions import ValidationError
 from nengo.params import (
     BoolParam, DictParam, EnumParam, NdarrayParam, NumberParam)
 from nengo.synapses import LinearFilter, Lowpass, SynapseParam
-from nengo.utils.compat import is_number
+from nengo.utils.numpy import is_number
 
 
 class WhiteNoise(Process):

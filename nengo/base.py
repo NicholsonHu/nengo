@@ -15,8 +15,7 @@ from nengo.params import (
     StringParam,
     Unconfigurable,
 )
-from nengo.utils.compat import is_integer
-from nengo.utils.numpy import as_shape, maxint
+from nengo.utils.numpy import as_shape, maxint, is_integer
 
 
 class NetworkMember(type):
