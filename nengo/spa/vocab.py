@@ -5,7 +5,7 @@ import numpy as np
 from nengo.exceptions import ReadonlyError, SpaParseError, ValidationError
 from nengo.params import Parameter
 from nengo.spa import pointer
-from nengo.utils.compat import is_iterable, is_number
+from nengo.utils.compat import is_iterable, is_number, is_integer
 
 
 class Vocabulary:
@@ -64,7 +64,7 @@ class Vocabulary:
     def __init__(self, dimensions, randomize=True, unitary=False,
                  max_similarity=0.1, include_pairs=False, rng=None):
 
-        if not isinstance(dimensions, int) or dimensions < 1:
+        if not is_integer(dimensions) or dimensions < 1:
             raise ValidationError("dimensions must be a positive integer",
                                   attr='dimensions', obj=self)
         self.dimensions = dimensions

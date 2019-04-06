@@ -9,6 +9,7 @@ import time
 
 import numpy as np
 
+from .compat import is_string
 from .logging import CaptureLogHandler, console_formatter
 
 
@@ -239,7 +240,7 @@ def allclose(t, targets, signals,  # noqa: C901
     if plt is not None:
         if labels is None:
             labels = [None] * len(signals)
-        elif isinstance(labels, str):
+        elif is_string(labels):
             labels = [labels]
 
         colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
@@ -319,7 +320,7 @@ def find_modules(root_path, prefix=None, pattern='^test_.*\\.py$'):
         containing the module path.
     """
     prefix = [] if prefix is None else prefix
-    if isinstance(prefix, str):
+    if is_string(prefix):
         prefix = [prefix]
     elif not isinstance(prefix, list):
         raise TypeError("Invalid prefix type '%s'" % type(prefix).__name__)

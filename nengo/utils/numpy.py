@@ -3,7 +3,7 @@ Extra functions to extend the capabilities of Numpy.
 """
 import numpy as np
 
-from .compat import is_iterable
+from .compat import is_integer, is_iterable
 from ..exceptions import ValidationError
 
 maxint = np.iinfo(np.int32).max
@@ -17,7 +17,7 @@ def as_shape(x, min_dim=0):
     """Return a tuple if ``x`` is iterable or ``(x,)`` if ``x`` is integer."""
     if is_iterable(x):
         shape = tuple(x)
-    elif isinstance(x, int):
+    elif is_integer(x):
         shape = (x,)
     else:
         raise ValueError("%r cannot be safely converted to a shape" % x)

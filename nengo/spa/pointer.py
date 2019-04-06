@@ -1,7 +1,7 @@
 import numpy as np
 
 from nengo.exceptions import ValidationError
-from nengo.utils.compat import is_number
+from nengo.utils.compat import is_integer, is_number
 
 
 class SemanticPointer:
@@ -12,7 +12,7 @@ class SemanticPointer:
     """
 
     def __init__(self, data, rng=None):
-        if isinstance(data, int):
+        if is_integer(data):
             if data < 1:
                 raise ValidationError("Number of dimensions must be a "
                                       "positive int", attr='data', obj=self)

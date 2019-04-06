@@ -15,6 +15,7 @@ from nengo.params import (
     StringParam,
     Unconfigurable,
 )
+from nengo.utils.compat import is_integer
 from nengo.utils.numpy import as_shape, maxint
 
 
@@ -163,7 +164,7 @@ class ObjView:
         if self.size_in is None and self.size_out is None:
             raise IndexError("Invalid slice '%s' of %s" % (key, self.obj))
 
-        if isinstance(key, int):
+        if is_integer(key):
             # single slices of the form [i] should be cast into
             # slice objects for convenience
             if key == -1:
