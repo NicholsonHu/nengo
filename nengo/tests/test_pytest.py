@@ -12,9 +12,8 @@ def test_seed_fixture(seed):
     assert i == 1832276344
 
 
-@pytest.mark.parametrize("use_ini", (True, False))
 @pytest.mark.parametrize("xfail", (True, False))
-def test_unsupported(use_ini, xfail, testdir):
+def test_unsupported(xfail, testdir):
     testdir.makefile(".py", test_file="""
         import pytest
 
@@ -30,39 +29,20 @@ def test_unsupported(use_ini, xfail, testdir):
             assert True
         """)
 
-    if use_ini:
-        testdir.makefile(".ini", pytest="""
-            [pytest]
-            nengo_test_unsupported =
-                test_file.py:test_unsupported[False]
-                    "One unsupported param
-                    with multiline comment"
-                test_file.py:test_unsupported_all*
-                    "Two unsupported params
-                    with multiline comment"
-            """)
+    testdir.makefile(".ini", pytest="""
+        [pytest]
+        nengo_test_unsupported =
+            test_file.py:test_unsupported[False]
+                "One unsupported param
+                with multiline comment"
+            test_file.py:test_unsupported_all*
+                "Two unsupported params
+                with multiline comment"
+        """)
 
-        testdir.makefile(".py", conftest="""
-            from nengo.conftest import pytest_runtest_setup, pytest_configure
-            """)
-    else:
-        testdir.makefile(".py", conftest=
-            """
-            from nengo.conftest import (
-                TestConfig, pytest_runtest_setup, pytest_configure)
-    
-            class MockSimulator(object):
-                unsupported = [
-                    ('test_file.py:test_unsupported[False]', 
-                     'One unsupported param '
-                     'with multiline comment'),
-                    ('test_file.py:test_unsupported_all*',
-                     'Two unsupported params '
-                     'with multiline comment'),
-                ]
-    
-            TestConfig.Simulator = MockSimulator
-            """)
+    testdir.makefile(".py", conftest="""
+        from nengo.conftest import pytest_runtest_setup, pytest_configure
+        """)
 
     args = "-p nengo.tests.options -rsx".split()
     if xfail:

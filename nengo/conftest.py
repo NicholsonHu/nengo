@@ -394,15 +394,12 @@ def pytest_runtest_setup(item):  # noqa: C901
 
     item_name = get_item_name(item)
 
-    if hasattr(TestConfig.Simulator, "unsupported"):
-        unsupported = TestConfig.Simulator.unsupported
-    else:
-        # join all the lines and then split (preserving quoted strings)
-        unsupported = shlex.split(
-            " ".join(item.config.getini("nengo_test_unsupported")))
-        # group pairs (representing testname + reason)
-        unsupported = [
-            unsupported[i:i + 2] for i in range(0, len(unsupported), 2)]
+    # join all the lines and then split (preserving quoted strings)
+    unsupported = shlex.split(
+        " ".join(item.config.getini("nengo_test_unsupported")))
+    # group pairs (representing testname + reason)
+    unsupported = [
+        unsupported[i:i + 2] for i in range(0, len(unsupported), 2)]
 
     for test, reason in unsupported:
         # escape brackets
