@@ -27,7 +27,7 @@ jobs:
     - env: MODE="test" NUMPY="numpy=1.14"
     - env: MODE="test" NUMPY="numpy=1.15"
     - env: MODE="test" PYTHON="3.4"
-    - env: MODE="test" PYTHON="3.5"
+    - env: MODE="test" COVERAGE="true" PYTHON="3.5"
     - stage: deploy
       if: branch =~ ^release-candidate-* OR tag =~ ^v[0-9]*
       env: MODE="deploy"
