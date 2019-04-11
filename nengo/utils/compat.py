@@ -10,7 +10,7 @@ import numpy as np
 PY2 = sys.version_info[0] == 2
 
 # If something's changed from Python 2 to 3, we handle that here
-if PY2:
+if PY2:  # pragma: no cover
     warnings.warn("Python 2 compatibility has been dropped from Nengo as of "
                   "version 3.0.0; nengo.utils.compat will be removed in the "
                   "next minor release.")
@@ -90,7 +90,7 @@ if PY2:
         without having to modify filters in the warnings module.
         """
 
-else:
+else:  # pragma: no cover
     import pickle
     import configparser
     from html import escape
@@ -118,33 +118,33 @@ else:
         return s
 
 
-def is_integer(obj):
+def is_integer(obj):  # pragma: no cover
     return isinstance(obj, int_types + (np.integer,))
 
 
-def is_iterable(obj):
+def is_iterable(obj):  # pragma: no cover
     if isinstance(obj, np.ndarray):
         return obj.ndim > 0  # 0-d arrays give error if iterated over
     else:
         return isinstance(obj, collections.Iterable)
 
 
-def is_number(obj, check_complex=False):
+def is_number(obj, check_complex=False):  # pragma: no cover
     types = ((float, complex, np.number) if check_complex else
              (float, np.floating))
     return is_integer(obj) or isinstance(obj, types)
 
 
-def is_string(obj):
+def is_string(obj):  # pragma: no cover
     return isinstance(obj, string_types)
 
 
-def is_array(obj):
+def is_array(obj):  # pragma: no cover
     # np.generic allows us to return true for scalars as well as true arrays
     return isinstance(obj, (np.ndarray, np.generic))
 
 
-def is_array_like(obj):
+def is_array_like(obj):  # pragma: no cover
     # While it's possible that there are some iterables other than list/tuple
     # that can be made into arrays, it's very likely that those arrays
     # will have dtype=object, which is likely to cause unexpected issues.
